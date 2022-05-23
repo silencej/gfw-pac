@@ -1,4 +1,5 @@
-var proxy = "PROXY 127.0.0.1:3128";
+// var proxy = "PROXY 127.0.0.1:3128";
+var proxy = "PROXY 127.0.0.1:7890; SOCKS 127.0.0.1:7890; SOCKS5 127.0.0.1:7890; DIRECT";
 
 var direct = 'DIRECT';
 
@@ -176,3 +177,4 @@ var radixTree = new RadixTree();
     }
     debug('Radix Tree 已生成', 'PAC文件载入完毕', cidrs.length.toString()+'个CIDR条目');
 })();
+
