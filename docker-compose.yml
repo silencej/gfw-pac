@@ -1,0 +1,23 @@
+version: '2.4'
+
+networks:
+  nginx_net:
+
+services:
+  # This is used as an proxy.
+  app:
+    image: nginx:alpine
+    volumes:
+    # - ./conf.d:/etc/nginx/conf.d
+    # - ./certs:/etc/ssl/certs:ro
+    - ./nginx-default.conf:/etc/nginx/conf.d/default.conf
+    - ./:/usr/share/nginx/html
+    restart: unless-stopped
+
+    # If with host network on, the port publishing will not work any more
+    ports:
+    - "60080:80"
+    # - "60443:443"
+    # network_mode: "host"
+    networks:
+      nginx_net:
